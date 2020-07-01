@@ -38,33 +38,6 @@ return averageMark / marks.length;
 
 }
 
-// 	let averageMark = 0;
-
-// 	for (let i = 0; i < marks.length; i++) {
-// 		averageMark += marks[i];
-// 	}
-
-// 	if(marks.length > 5) {
-// 		// for (let i = 0; i < 5; i++) {
-// 		// averageMark += marks[i];
-// 	    // }
-// 	    //НЕ ПОНЯЛА ПОЧЕМУ ЭТОТ ЦИКЛ НЕ РАБОТАЕТ...
-// 	  let grades = marks.slice(0,5);
-
-//       averageMark = marks[0] + marks[1] + marks[2] + marks[3] +marks[4]; // А ВОТ ЭТО ВОТ БЕЗОБРАЗИЕ РАБОТАЕТ
-//       averageMark = averageMark / grades.length;
-
-//       console.log("Максимальное количество оценок - 5");
-//     } else if(marks.length <= 0) {
-//       console.log("Оценки не введены");
-//       averageMark = 0;
-//     } else {
-//       averageMark = averageMark / marks.length;
-//     }
-
-//     return averageMark;
-// }
-
 function askDrink(name,dateOfBirthday) {
     // код для задачи №3 писать здесь
     // return result;
