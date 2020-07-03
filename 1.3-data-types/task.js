@@ -1,38 +1,37 @@
 "use strict";
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
-   
-   let sumAmount = amount - contribution;
-   let today = new Date();
-   let milliseconds = Number(date) - Number(today);
-   let month = milliseconds / 1000 / 60 / 60 / 24 / 30.38;
-   let P = percent / 100 / 12;
-   let monthlyFee = sumAmount * (P + P / (Math.pow((1 + P), month) - 1));
-   let totalAmount = monthlyFee * month;
+  
+    if(isNaN(+percent)) {
+    	return `Параметр "Процентная ставка" содержит неправильное значение ${percent}`;
+    } else if (isNaN(+contribution)) {
+    	return `Параметр "Начальный взнос" содержит неправильное значение ${contribution}`;
+    } else if (isNaN(+amount)) {
+    	return `Параметр "Общая стоимость" содержит неправильное значение ${amount}`;
+    } 
 
-   if(isNaN(percent)) {
-   	    let percentName = '"Процентная ставка"';
+    const sumAmount = amount - contribution;
+    const today = new Date();
+    const milliseconds = Number(date) - Number(today);
+    const month = milliseconds / 1000 / 60 / 60 / 24 / 30.38;
+    const P = percent / 100 / 12;
+    const monthlyFee = sumAmount * (P + P / (Math.pow((1 + P), month) - 1));
+    const totalAmount = monthlyFee * month;
 
-    	totalAmount = `Параметр ${percentName} содержит неправильное значение ${percent}`;
-    	return totalAmount;
-   } else if (isNaN(contribution)) {
-        let contributionName = '"Начальный взнос"';
+  
+    console.log(totalAmount.toFixed(2));
+    return totalAmount.toFixed(2);
 
-    	totalAmount = `Параметр ${contributionName} содержит неправильное значение ${contribution}`;
-    	return totalAmount;
-   } else if (isNaN(amount)) {
-        let amountName = '"Общая стоимость"';
-
-    	totalAmount = `Параметр ${amountName} содержит неправильное значение ${amount}`;
-    	return totalAmount;
-   } else {
-   	    console.log(totalAmount.toFixed(2));
-        return totalAmount.toFixed(2);
-   }
-   
 }
 
 function getGreeting(name) {
-    // код для задачи №2 писать здесь
-    // return greeting;
+   
+   if (name.length === 0) {
+   	console.log(`Привет, мир! Меня зовут Аноним.`);
+    return "Привет, мир! Меня зовут Аноним.";
+   } 
+
+   console.log(`Привет, мир! Меня зовут ${name}.`);
+   return `Привет, мир! Меня зовут ${name}.`;
+
 }
