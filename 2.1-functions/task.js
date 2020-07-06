@@ -59,7 +59,7 @@ function getAverageScore(data) {
   	data[i] = getAverageMark(data[i]);
   	average.push(data[i])
   }
-  data[average] = getAverageMark(average);
+  data.average = getAverageMark(average);
   return data;
 }
 
