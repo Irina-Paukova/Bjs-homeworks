@@ -25,6 +25,10 @@ class Triangle {
 		this.a = side1;
 		this.b = side2;
 		this.c = side3;
+
+		if (this.a + this.b < this.c || this.a + this.c < this.b || this.b + this.c < this.b) {
+			throw new Error('Треугольник с такими сторонами не существует');
+		}
 	};
 	getPerimeter() {
 		return this.a + this.b + this.c;
@@ -38,9 +42,6 @@ class Triangle {
 
 function getTriangle(side1, side2, side3) {
 	try {
-		if (this.a + this.b > this.c) {
-			throw new Error('Треугольник с такими сторонами не существует');
-		}
 		return new Triangle(side1, side2, side3);
 	} catch(e) {
 		return {
