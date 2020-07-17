@@ -1,10 +1,5 @@
 'use strict'
 
-function compareId(arr1, arr2) {
-	return arr1 === arr2;
-}
-
-
 class AlarmClock {
 	constructor() {
 		this.alarmCollection = [];
@@ -20,11 +15,13 @@ class AlarmClock {
 			return console.error('Будильник с таким id уже существует.');
 		}
 
-		this.alarmCollection.push({id: id, time: time, callback: callback});
+		this.alarmCollection.push({id, time, callback});
 	};
 
 	removeClock(id) {
-		return this.alarmCollection = this.alarmCollection.filter(elem => elem.id !== id);
+		let len = this.alarmCollection.length;
+		this.alarmCollection = this.alarmCollection.filter(elem => elem.id !== id);
+		return len != this.alarmCollection.length;
 	};
 
 	getCurrentFormattedTime() {
@@ -32,15 +29,8 @@ class AlarmClock {
 	};
 
 	start() {
-		function checkClock(alarm) {
-			if (alarm.time == this.getCurrentFormattedTime()) {
-				return alarm.callback();
-			}
-		}
-
-		if (this.timerId === undefined) {
-			return this.timerId = setInterval(() => this.alarmCollection.forEach(alarm => checkClock(alarm), 5000))
-		}
+		let checkClock = alarm => (alarm.time == this.getCurrentFormattedTime()) && alarm.callback();
+        (!this.timerId) && (this.timerId = setInterval(() => this.alarmCollection.forEach(alarm => checkClock(alarm)), 5000));
 	};
 
 	stop() {
